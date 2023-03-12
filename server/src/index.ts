@@ -15,8 +15,10 @@ app.use(cors({
 );
 app.use(express.json());
 
-app.get('/', (req: Request , res: Response) => {
-    res.send("hello world");
+app.get('/decks', async (req: Request , res: Response) => {
+    const decks = await Deck.find();
+    console.log(decks);
+    res.json(decks);
 });
 
 app.post('/decks', async (req: Request, res: Response) => {
